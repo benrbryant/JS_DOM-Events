@@ -1,27 +1,32 @@
 /*----------- Exercise #1: SELECTING/MANIPULATING ELEMENTS -----------*/
 
-// Select Node #1 and change the text to: "I used the getElementById("node1") method to access this"
-// Select Node #2 and change the text to: "I used the getElementByClassName("node2") method to access this" */
-// Select ALL the h3 tags and change the text to: "I used the getElementByTagName("h3") method to access all of these" */
+// Select Node #1 using the getElementById() method, and change the text to: “I used the getElementById(“node1”) method to access this”
+
+// Select Node #2 using the getElementsByClassName() method, and change the text to: "I used the getElementByClassName("node2") method to access this"
+
+// Select ALL the h3 tags using the getElementsByTagName() method, and change the text to: "I used the getElementByTagName("h3") method to access all of these"
 
 /*----------- Exercise #2: CREATING/APPENDING/INSERTING ELEMENTS/OBJECTS -----------*/
 
 // TODO: Create a paragraph element using this element.createElement() and put this text inside "This node was created using the createElement() method"
-// TODO: Append the created node to the parent node using the element.appendChild() method
+// TODO: Append the created node to the parent node using the element.appendChild() method (Keep in mind that you’ll need to select the parent node first)
 
 // TODO: Create a <a> element using this element.createElement() and put this text inside "I am a <p> tag"
-// TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
-// BONUS: Add a link href to the <a>
+
+// TODO: Insert the created <a> in the parent, but before the <p> you just created using the element.insertBefore() method
+// BONUS: Add a link href to the <a> by selecting the anchorElement.link property
 
 /*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
 
-// TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
-// TODO: Remove the "New Child Node"
+// TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node" using the replaceChild() method.
+// TODO: Remove the "New Child Node" using the remove() method or removeChild() method.
 
 /*----------- Exercise #4: ANIMATIONS ----------- */
 
-// TODO: Write your JavaScript here to make the red box go from right to left
-// BONUS - Make the red box go all the way around the perimeter of the green box */
+// TODO: Create an animation that makes the box inside the container move from left to right.
+// Start by Selecting the box inside the container, then incrementing it’s position gradually to create the effect of the box moving across the container.
+
+// BONUS - Make the red box move all the way around the perimeter of the green box
 
 /*----------- Exercise #5: DOM EVENTS --------------*/
 
