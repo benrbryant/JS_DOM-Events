@@ -13,40 +13,49 @@ window.onload = () => {
     };
   }, 1500);
 
-/*----------- Exercise #2: CREATING/APPENDING/INSERTING ELEMENTS/OBJECTS -----------*/
+  /*----------- Exercise #2: CREATING/APPENDING/INSERTING ELEMENTS/OBJECTS -----------*/
 
-// TODO: Create a paragraph element using this element.createElement() and put this text inside "This node was created using the createElement() method"
-// TODO: Append the created node to the parent node using the element.appendChild() method
-// TODO: Create a <a> element using this element.createElement() and put this text inside "I am a <p> tag"
-// TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
-// BONUS: Add a link href to the <a>
+  // TODO: Create a paragraph element using this element.createElement() and put this text inside "This node was created using the createElement() method"
+  // TODO: Append the created node to the parent node using the element.appendChild() method
+  // TODO: Create a <a> element using this element.createElement() and put this text inside "I am a <p> tag"
+  // TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
+  // BONUS: Add a link href to the <a>
 
-let p = document.createElement('p');
-p.innerHTML = 'This node was created using the <code>createElement()</code> method<br>';
-let a = document.createElement('a');
-//a.link = 'https://www.scottseverance.us'; // Instructions are wrong. This doesn't work.
-a.setAttribute('href', 'https://www.scottseverance.us');
-a.innerText = 'My website';
-let parent = document.getElementById('parent');
+  let p = document.createElement('p');
+  p.innerHTML = 'This node was created using the <code>createElement()</code> method<br>';
+  let a = document.createElement('a');
+  //a.link = 'https://www.scottseverance.us'; // Instructions are wrong. This doesn't work.
+  a.setAttribute('href', 'https://www.scottseverance.us');
+  a.innerText = 'My website';
+  let parent = document.getElementById('parent');
 
-setTimeout(() => {parent.appendChild(p);}, 2000);
-setTimeout(() => {parent.insertBefore(a, p)}, 2500);
+  setTimeout(() => {parent.appendChild(p);}, 2000);
+  setTimeout(() => {parent.insertBefore(a, p)}, 2500);
 
+  /*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
 
+  // TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
+  // TODO: Remove the "New Child Node"
 
-/*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
+  setTimeout(() => {
+    let child = document.getElementById('N1');
+    let new_child = document.createElement('p')
+    new_child.style.color = 'red';
+    new_child.innerText = 'New Child Node';
+    child.parentElement.replaceChild(new_child, child);
+    setTimeout(() => {
+      new_child.parentElement.removeChild(new_child);
+    }, 1000)
+  }, 3000);
 
-// TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
-// TODO: Remove the "New Child Node"
+  /*----------- Exercise #4: ANIMATIONS ----------- */
 
-/*----------- Exercise #4: ANIMATIONS ----------- */
+  // TODO: Write your JavaScript here to make the red box go from right to left
+  // BONUS - Make the red box go all the way around the perimeter of the green box */
 
-// TODO: Write your JavaScript here to make the red box go from right to left
-// BONUS - Make the red box go all the way around the perimeter of the green box */
+  /*----------- Exercise #5: DOM EVENTS --------------*/
 
-/*----------- Exercise #5: DOM EVENTS --------------*/
-
-// TODO: write a function called "show" which creates a new div with an alerting message to the user with this message -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
-// This div should be a 'modal' that covers the main content on the screen
-// BONUS: The modal popup should be able to be closed. Refactor for this functionality
+  // TODO: write a function called "show" which creates a new div with an alerting message to the user with this message -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
+  // This div should be a 'modal' that covers the main content on the screen
+  // BONUS: The modal popup should be able to be closed. Refactor for this functionality
 };
