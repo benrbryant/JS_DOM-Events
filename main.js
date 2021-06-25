@@ -3,6 +3,15 @@
 // Select Node #1 and change the text to: "I used the getElementById("node1") method to access this"
 // Select Node #2 and change the text to: "I used the getElementByClassName("node2") method to access this" */
 // Select ALL the h3 tags and change the text to: "I used the getElementByTagName("h3") method to access all of these" */
+window.onload = () => {
+  setTimeout(() => {document.getElementById('node1').innerHTML = 'I used <code>getElementById("node1")</code> to access this.';}, 500);
+  setTimeout(() => {document.getElementsByClassName('node2')[0].innerHTML = 'I used <code>getElementsByClassName("node2")</code> to access this.';}, 1000);
+  setTimeout(() => {
+    let h3 = document.getElementsByTagName('h3');
+    for (let i=0; i<h3.length; i++) {
+      setTimeout(() => {h3[i].innerHTML = 'I used the <code>getElementsByTagName("h3")</code> method to access all of these';}, i*150);
+    };
+  }, 1500);
 
 /*----------- Exercise #2: CREATING/APPENDING/INSERTING ELEMENTS/OBJECTS -----------*/
 
@@ -28,3 +37,4 @@
 // TODO: write a function called "show" which creates a new div with an alerting message to the user with this message -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
 // This div should be a 'modal' that covers the main content on the screen
 // BONUS: The modal popup should be able to be closed. Refactor for this functionality
+};

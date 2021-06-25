@@ -10,6 +10,13 @@ body {
   height: auto;
 }
 
+code {
+  font-size: 1.1em;
+  border: solid white 1px;
+  border-radius: 3px;
+  padding: 0 2px;
+  background:rgba(255,255,255,.3);
+}
 .main {
   text-align: center;
 }
