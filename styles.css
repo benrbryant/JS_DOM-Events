@@ -69,6 +69,18 @@ a {
   height: 200px;
   background: green;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container a {
+  color: white;
+  font-weight: 100;
+}
+
+#container-label {
+  font-weight: bold;
 }
 
 #box {
@@ -76,6 +88,8 @@ a {
   height: 50px;
   background: red;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*--------------- EXERCISE 4 STYLES ---------------- */

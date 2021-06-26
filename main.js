@@ -4,15 +4,17 @@
 // Select Node #2 and change the text to: "I used the getElementByClassName("node2") method to access this" */
 // Select ALL the h3 tags and change the text to: "I used the getElementByTagName("h3") method to access all of these" */
 window.onload = () => {
-  setTimeout(() => {document.getElementById('node1').innerHTML = 'I used <code>getElementById("node1")</code> to access this.';}, 500);
-  setTimeout(() => {document.getElementsByClassName('node2')[0].innerHTML = 'I used <code>getElementsByClassName("node2")</code> to access this.';}, 1000);
+  const timeouts = [500, 2500, 4500, 6500, 15000];
   setTimeout(() => {
-    let h3 = document.getElementsByTagName('h3');
-    for (let i=0; i<h3.length; i++) {
-      setTimeout(() => {h3[i].innerHTML = 'I used the <code>getElementsByTagName("h3")</code> method to access all of these';}, i*150);
-    };
-  }, 1500);
-
+    document.getElementById('node1').innerHTML = 'I used <code>getElementById("node1")</code> to access this.';
+    setTimeout(() => {document.getElementsByClassName('node2')[0].innerHTML = 'I used <code>getElementsByClassName("node2")</code> to access this.';}, 500);
+    setTimeout(() => {
+      let h3 = document.getElementsByTagName('h3');
+      for (let i=0; i<h3.length; i++) {
+        setTimeout(() => {h3[i].innerHTML = 'I used the <code>getElementsByTagName("h3")</code> method to access all of these';}, i*150);
+      };
+    }, 1000);
+  }, timeouts.shift());
   /*----------- Exercise #2: CREATING/APPENDING/INSERTING ELEMENTS/OBJECTS -----------*/
 
   // TODO: Create a paragraph element using this element.createElement() and put this text inside "This node was created using the createElement() method"
@@ -20,18 +22,18 @@ window.onload = () => {
   // TODO: Create a <a> element using this element.createElement() and put this text inside "I am a <p> tag"
   // TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
   // BONUS: Add a link href to the <a>
+  setTimeout(() => {
+    let p = document.createElement('p');
+    p.innerHTML = 'This node was created using the <code>createElement()</code> method<br>';
+    let a = document.createElement('a');
+    //a.link = 'https://www.scottseverance.us'; // Instructions are wrong. This doesn't work.
+    a.setAttribute('href', 'https://www.scottseverance.us');
+    a.innerText = 'My website';
+    let parent = document.getElementById('parent');
 
-  let p = document.createElement('p');
-  p.innerHTML = 'This node was created using the <code>createElement()</code> method<br>';
-  let a = document.createElement('a');
-  //a.link = 'https://www.scottseverance.us'; // Instructions are wrong. This doesn't work.
-  a.setAttribute('href', 'https://www.scottseverance.us');
-  a.innerText = 'My website';
-  let parent = document.getElementById('parent');
-
-  setTimeout(() => {parent.appendChild(p);}, 2000);
-  setTimeout(() => {parent.insertBefore(a, p)}, 2500);
-
+    setTimeout(() => {parent.appendChild(p);}, 500);
+    setTimeout(() => {parent.insertBefore(a, p)}, 1000);
+  }, timeouts.shift());
   /*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
 
   // TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
@@ -46,12 +48,83 @@ window.onload = () => {
     setTimeout(() => {
       new_child.parentElement.removeChild(new_child);
     }, 1000)
-  }, 3000);
+  }, timeouts.shift());
 
   /*----------- Exercise #4: ANIMATIONS ----------- */
 
   // TODO: Write your JavaScript here to make the red box go from right to left
   // BONUS - Make the red box go all the way around the perimeter of the green box */
+
+  setTimeout(() => {
+    function animate() {
+      const container = document.getElementById('container');
+      const box = document.getElementById('box');
+      const label = document.getElementById('container-label');
+      const step_size = 1;
+      const max_trips = 5;
+      const box_width = window.getComputedStyle(box).width.replace(/[^0-9]+/, '') * 1;
+      const box_height = window.getComputedStyle(box).height.replace(/[^0-9]+/, '') * 1;
+      const container_width = window.getComputedStyle(container).width.replace(/[^0-9]+/, '') * 1;
+      const container_height = window.getComputedStyle(container).height.replace(/[^0-9]+/, '') * 1;
+      
+      let box_top = 0;
+      let box_left = 0;
+      let direction = 'right';
+      let trips = 1;
+      
+      let timer = setInterval(() => {
+        console.debug('tick', direction);
+        switch(direction) {
+          case 'right':
+            if(box_left == 0) {
+              label.innerHTML = `Lap ${trips} of ${max_trips}`;
+            }
+            if(box_left < container_width - box_width) {
+              box_left += step_size;
+              box.style.left = box_left + 'px';
+            } else {
+              //clearInterval(timer);
+              direction = 'down';
+            }
+            break;
+          case 'down':
+            if(box_top < container_height - box_height) {
+              box_top += step_size;
+              box.style.top = box_top + 'px';
+            } else{
+              direction = 'left';
+            }
+            break;
+          case 'left':
+            if(box_left > 0) {
+              box_left -= step_size;
+              box.style.left = box_left + 'px';
+            } else {
+              direction = 'up';
+            }
+            break;
+          case 'up':
+            if(box_top > 0) {
+              box_top -= step_size;
+              box.style.top = box_top + 'px';
+            } else {
+              trips++;
+              if (trips > max_trips) {
+                clearInterval(timer);
+                label.innerHTML = 'Animation finished!<br>';
+                let a = document.createElement('a');
+                a.innerHTML = 'Run animation again';
+                a.setAttribute('href', 'javascript:');
+                a.addEventListener('click', animate);
+                label.appendChild(a);
+              }
+              direction = 'right';
+            }
+        }
+      }, 3);
+    }
+    animate();
+  }, timeouts.shift());
 
   /*----------- Exercise #5: DOM EVENTS --------------*/
 
