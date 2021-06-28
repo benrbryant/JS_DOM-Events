@@ -56,16 +56,20 @@ window.onload = () => {
   // BONUS - Make the red box go all the way around the perimeter of the green box */
 
   setTimeout(() => {
+    function get_dimension(obj, dimension) {
+      return window.getComputedStyle(obj)[dimension].replace(/[^0-9]+/, '') * 1;
+    }
+
     function animate() {
       const container = document.getElementById('container');
       const box = document.getElementById('box');
       const label = document.getElementById('container-label');
       const step_size = 1;
       const max_trips = 5;
-      const box_width = window.getComputedStyle(box).width.replace(/[^0-9]+/, '') * 1;
-      const box_height = window.getComputedStyle(box).height.replace(/[^0-9]+/, '') * 1;
-      const container_width = window.getComputedStyle(container).width.replace(/[^0-9]+/, '') * 1;
-      const container_height = window.getComputedStyle(container).height.replace(/[^0-9]+/, '') * 1;
+      const box_width = get_dimension(box, 'width');
+      const box_height = get_dimension(box, 'height');
+      const container_width = get_dimension(container, 'width');
+      const container_height = get_dimension(container, 'height');
       
       let box_top = 0;
       let box_left = 0;
