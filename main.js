@@ -72,7 +72,7 @@ window.onload = () => {
       let direction = 'right';
       let trips = 1;
       
-      let timer = setInterval(() => {
+      const timer = setInterval(() => {
         console.debug('tick', direction);
         switch(direction) {
           case 'right':
@@ -83,7 +83,6 @@ window.onload = () => {
               box_left += step_size;
               box.style.left = box_left + 'px';
             } else {
-              //clearInterval(timer);
               direction = 'down';
             }
             break;
@@ -125,10 +124,28 @@ window.onload = () => {
     }
     animate();
   }, timeouts.shift());
+};
 
   /*----------- Exercise #5: DOM EVENTS --------------*/
 
   // TODO: write a function called "show" which creates a new div with an alerting message to the user with this message -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
   // This div should be a 'modal' that covers the main content on the screen
   // BONUS: The modal popup should be able to be closed. Refactor for this functionality
-};
+function show() {
+  let div = document.createElement('div');
+  let inner_div = document.createElement('div');
+  let p = document.createElement('p');
+  let x = document.createElement('div');
+  
+  div.id = 'show-modal';
+  p.innerHTML = 'Clicking the button triggers the <code>onclick</code> event, which calls the JS function <code>show()</code>, which alerts the user.';
+  x.id = 'show-modal-close';
+  x.innerHTML = '&times;';
+  inner_div.appendChild(p);
+  inner_div.appendChild(x);
+  div.appendChild(inner_div);
+  x.addEventListener('click', () => {
+    div.parentNode.removeChild(div);
+  });
+  document.getElementsByTagName('body')[0].appendChild(div);
+}
