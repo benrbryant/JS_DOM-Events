@@ -10,6 +10,19 @@ body {
   height: auto;
 }
 
+code {
+  font-size: 1.1em;
+  border: solid white 1px;
+  border-radius: 3px;
+  padding: 0 2px;
+  background:rgba(255,255,255,.3);
+}
+
+a {
+  color: rgb(150,150,150);
+  text-decoration: underline;
+}
+
 .main {
   text-align: center;
 }
@@ -56,6 +69,18 @@ body {
   height: 200px;
   background: green;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container a {
+  color: white;
+  font-weight: 100;
+}
+
+#container-label {
+  font-weight: bold;
 }
 
 #box {
@@ -63,6 +88,8 @@ body {
   height: 50px;
   background: red;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*--------------- EXERCISE 4 STYLES ---------------- */
@@ -85,4 +112,38 @@ body {
   padding: 20px;
   width: auto;
   height: auto;
+}
+
+#show-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#show-modal > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+  border-radius: 1em;
+  max-width: 50%;
+  background-color: whitesmoke;
+}
+
+#show-modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
 }
